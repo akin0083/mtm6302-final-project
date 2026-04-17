@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Explorer - NASA Astronomy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">🌌</span>
+                    Cosmic Explorer
+                </h1>
+                <nav class="nav">
+                    <button id="todayBtn" class="nav-btn active" data-view="today">Today</button>
+                    <button id="favoritesBtn" class="nav-btn" data-view="favorites">Favorites</button>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Today View -->
+            <section id="todayView" class="view active">
+                <div class="date-picker">
+                    <label for="datePicker">Explore by Date:</label>
+                    <input type="date" id="datePicker" max="">
+                    <button id="loadDateBtn" class="btn btn-primary">Load Image</button>
+                </div>
+                
+                <div class="loading" id="loadingSpinner">
+                    <div class="spinner"></div>
+                    <p>Loading cosmic wonders...</p>
+                </div>
+
+                <div class="error" id="errorMessage" style="display: none;">
+                    <h3>Unable to load image</h3>
+                    <p id="errorText"></p>
+                    <button id="retryBtn" class="btn btn-secondary">Try Again</button>
+                </div>
+
+                <article class="apod-card" id="apodCard" style="display: none;">
+                    <div class="image-container">
+                        <img id="apodImage" src="" alt="" loading="lazy">
+                        <div class="image-overlay">
+                            <button id="saveBtn" class="save-btn" title="Save to Favorites">
+                                <span class="heart">❤️</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h2 id="apodTitle"></h2>
+                        <p class="date" id="apodDate"></p>
+                        <div class="description" id="apodExplanation"></div>
+                        <div class="meta">
+                            <span class="photographer" id="apodPhotographer"></span>
+                            <a id="apodCopyrightLink" href="#" target="_blank" class="copyright"></a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Favorites View -->
+            <section id="favoritesView" class="view">
+                <div class="favorites-header">
+                    <h2>Your Favorite Space Images</h2>
+                    <button id="clearFavoritesBtn" class="btn btn-danger">Clear All Favorites</button>
+                </div>
+                <div id="favoritesGrid" class="favorites-grid">
+                    <!-- Favorites will be populated here -->
+                </div>
+                <div id="noFavorites" class="no-favorites">
+                    <div class="empty-state">
+                        <div class="empty-icon">⭐</div>
+                        <h3>No favorites yet</h3>
+                        <p>Save your favorite space images from the Today tab to see them here!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
